@@ -20,7 +20,7 @@
 // * O TypeScript pode ser instalado utilizando o comando 'npm install -g typescript' no terminal após
 // * termos instalado o Node.JS.
 // * O TypeScript adiciona tipos e nos força a sermos mais explícitos na hora de programar. Ao executar
-// * o código, ele nos retorna com um código de JavaScript.
+// * o código e compilar utilizando o comando tsc, ele nos retorna com um código de JavaScript.
 //
 // ******************************************************************************************************
 
@@ -51,4 +51,6 @@ button.addEventListener("click", function () {
 // *  - Funções de meta-programação
 // *  - Ferramentas modernas que ajudam até mesmo em projetos que não são de TypeScript
 //
+// ******************************************************************************************************
+
 // ******************************************************************************************************
