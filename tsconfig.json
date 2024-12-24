@@ -110,6 +110,6 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/S5_ClassesInterface.ts"
+    "src/S6_TiposAvancados.ts"
   ]
 }
