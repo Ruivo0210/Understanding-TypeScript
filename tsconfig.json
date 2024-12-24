@@ -110,6 +110,6 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/S4_JavaScript.ts"
+    "src/S5_ClassesInterface.ts"
   ]
 }
