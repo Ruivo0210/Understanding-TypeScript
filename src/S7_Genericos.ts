@@ -106,7 +106,78 @@ extractAndConvert({name: 'Max'}, 'name')
 //
 // * Classes genéricas
 //
-// * 
+// * Podemos criar classes genéricas e definir o tipo que elas irão armazenar ao manipularmos um objeto.
+//
+// *************************************************************************************************************************
+
+class DataStorage<T extends string | number | boolean> { // Criando a classe do tipo genérico T que armazenará outros tipos
+    private data: T[] = []; // Criando array
+  
+    addItem(item: T) {
+      this.data.push(item);
+    }
+  
+    removeItem(item: T) {
+      if (this.data.indexOf(item) === -1) { // Resolvendo bug do index do objeto
+        return;
+      }
+      this.data.splice(this.data.indexOf(item), 1); // -1
+    }
+  
+    getItems() {
+      return [...this.data];
+    }
+  }
+  
+  const textStorage = new DataStorage<string>(); // Criando objeto da classe do tipo string
+  textStorage.addItem('Max');
+  textStorage.addItem('Manu');
+  textStorage.removeItem('Max');
+  console.log(textStorage.getItems());
+  
+  const numberStorage = new DataStorage<number>();
+
+// *************************************************************************************************************************
+//
+// * Tipos Genéricos Embutidos
+//
+// * O TS possui alguns tipos genéricos embutidos para facilitar a manipulação de alguns dados. Exemplo:
+// * Partial  -> O Partial é usado para tornar todas as propriedades de uma classe ou interface como opcionais. Fazemos 
+// * isso para certificar o TS que o objeto conterá as propriedades ao criarmos ele.
+// * Readonly -> Faz com que uma variável ou constante não possa ser modificada posteriormente.
+//
+// *************************************************************************************************************************
+
+interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+  }
+  
+  function createCourseGoal(
+    title: string,
+    description: string,
+    date: Date
+  ): CourseGoal {
+    let courseGoal: Partial<CourseGoal> = {}; // Caso não adicionarmos o Partial, retorna erro!
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal as CourseGoal;
+  }
+  
+const names1: Readonly<string[]> = ['Max', 'Anna'];
+// names1.push('Manu'); // Retorna erro!
+// names1.pop(); // Retorna erro!
+
+// *************************************************************************************************************************
+//
+// * Tipos Genéricos vs Tipos de União
+//
+// * Os tipos de união são utilizados quando queremos flexibilizar o uso de vários tipos ao mesmo tempo em uma única 
+// * propriedade. Aqui, ao definirmos o tipo de união, podemos usar tanto um tipo quanto o outro. Os tipos genéricos
+// * são utilizados quando queremos definir os tipos que queremos usar, porém ao criarmos um objeto daquele tipo, apenas
+// * o tipo definido poderá ser utilizado.
 //
 // *************************************************************************************************************************
 
